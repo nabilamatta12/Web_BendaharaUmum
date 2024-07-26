@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    --primaryColor: hsl(94, 55%, 56%);
+    --hoverColor: hsl(204, 70%, 53%); /* Changed hover color to blue */
+    --paleGreen: hsl(96, 75%, 89%);
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(0, 0%, 18%);
+    --greyText: hsl(0, 0%, 75%);
+    --bgColor: hsl(113, 11%, 85%);
+    --biggestFontSize: 2.5rem;
+    --h1FontSize: 1.5rem;
+    --h2FontSize: 1.25rem;
+    --h3FontSize: 1rem;
+    --normalFontSize: .938rem;
+    --smallFontSize: .813rem;
+    --smallestFontSize: .75rem;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+html {
+    font-size: 98%;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.icon {
+    font-size: var(--h2FontSize);
+    cursor: pointer;
+}
+
+img, video {
+    height: auto;
+    width: 100%;
+}
+
+.message {
+    display: none;
+}
+
+.showMessage {
+    display: block;
+    color: var(--whiteColor);
+    padding: 7px;
+    background: #102C57;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: .8rem 1rem;
+    color: var(--greyText);
+    
+}
+
+.btn .icon {
+    margin-left: .5rem;
+}
+
+.btn:hover {
+    color: var(--primaryColor);
+    background: var(--paleGreen);
+}
+
+.loginPage {
+    min-height: 100vh;
+    width: 100%;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 50px rgb(214, 223, 233);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginPage .container {
+    height: 75vh;
+    width: 57%;
+    margin: auto;
+    justify-content: space-between;
+    border-radius: 20px;
+    background: hsl(0, 0%, 91%);
+    display: flex;
+    flex-direction: row;
+}
+
+.imgDiv {
+    position: relative;
+    display: flex;
+    flex-basis: 50%;
+    width: 80%;
+    height: 99%;
+    padding: 0 1.5rem;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.imgDiv img, .footerDiv {
+    position: absolute;
+}
+
+.imgDiv img {
+    justify-content: center;
+    width: 189px;
+    left: 30%;
+    top: 15%;
+    right: 5px;
+}
+
+.textDiv {
+    position: relative;
+}
+
+.textDiv .title {
+    color: var(--whiteColor);
+    font-size: 35px;
+    font-weight: 800;
+}
+
+.textDiv p {
+    color: var(--whiteColor);
+    padding: 1rem;
+    font-weight: 400;
+}
+
+.footerDiv {
+    bottom: 20px;
+    padding: 0 1rem;
+    height: 46px;
+    background: rgba(255, 255, 255, 0.8);
+    left: 45px;
+    right: 10px;
+    justify-content: space-around;
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+}
+
+.footerDiv .text {
+    color: var(--blackColor);
+}
+
+.footerDiv .btn {
+    background: var(--whiteColor);
+    color: var(--blackColor);
+    padding: .5rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 400;
+    transition: .3s ease;
+}
+
+.footerDiv .btn:hover {
+    background: var(--hoverColor);
+    color: var(--blackColor);
+}
+
+.formDiv {
+    flex-basis: 50%;
+    margin: auto;
+    flex-direction: column;
+    gap: 0rem;
+    transform: translate(-1rem);
+}
+
+.headerDiv {
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.headerDiv img {
+    width: 30px;
+    padding-bottom: .1rem;
+}
+
+.headerDiv h3 {
+    font-size: 15px;
+    color: var(--blackColor);
+    font-weight: 600;
+}
+
+.form {
+    gap: 0rem;
+}
+
+.inputDiv .icon {
+    color: var(--greyText);
+}
+
+.inputDiv input {
+    background: none !important;
+    outline: none;
+    width: 200px;
+}
+
+.inputDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 240px;
+    color: #0a0a0a;
+    margin-bottom: 0px;
+}
+
+.inputDiv label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    background-color: white !important;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    border: 2px solid #0a0a0a;
+}
+
+.input .icon {
+    margin-right: 1px;
+    color: black;
+}
+
+.input input {
+    flex: 1;
+    background: none;
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    color: black;
+}
+
+.input input::placeholder {
+    color: #fff;
+}
+
+.inputDiv label {
+    color: var(--blackColor);
+    font-weight: 400;
+    font-size: 14px;
+    padding: .5rem 0;
+    display: block;
+}
+
+.inputDiv .input {
+    gap: .5rem;
+    padding: 1rem;
+    background: var(--inputColor);
+    border-radius: 10px;
+    color: var(--whiteColor);
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+    gap: .5rem;
+    transition: .3s ease;
+    background: #5AB2FF;
+}
+
+.form .btn {
+    padding: .8rem;
+    background: #102C57;
+    border-radius: 10px;
+    color: var(--whiteColor);
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+    gap: .5rem;
+    transition: .3s ease;
+}
+
+.form .btn .icon {
+    font-size: 25px;
+    transition: .3s ease;
+}
+
+.form .btn:hover {
+    background: var(--hoverColor);
+    color: var(--blackColor);
+}
+
+.form .btn:hover .icon {
+    color: var(--blackColor);
+    transform: translate(5px);
+}
+
+.forgotPassword {
+    font-size: 13px;
+    color: var(--blackColor);
+    opacity: .7;
+    text-align: center;
+}
+
+.forgotPassword a {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .loginPage .container {
+        width: 75%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .formDiv {
+        transform: translate(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .loginPage .container {
+        width: 90%;
+    }
+
+    .imgDiv, .formDiv {
+        flex-basis: auto;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .imgDiv img {
+        position: static;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 85%;
+    }
+
+    .loginPage .container {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .inputDiv input, .form .btn {
+        font-size: .75rem;
+    }
+
+    .form .btn .icon {
+        font-size: 20px;
+    }
+}
+
+.form .btn:hover {
+    background: var(--hoverColor);
+    color: var(--blackColor);
+}
+
+
