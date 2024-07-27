@@ -1,4 +1,3 @@
-
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Icon from "@mui/material/Icon";
@@ -29,7 +28,6 @@ import Projects from "old/dashboard/components/Projects";
 import OrderOverview from "old/dashboard/components/OrderOverview";
 import authorsTableData from "./data/authorsTableData";
 
-
 // Data
 import reportsBarChartData from "old/dashboard/data/reportsBarChartData";
 import gradientLineChartData from "old/dashboard/data/gradientLineChartData";
@@ -45,34 +43,33 @@ function Dashboard() {
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Grid container spacing={3}>
-          <Grid item xs={5} xl={5}>
-                  <MasterCard number={4562112245947852} holder="Nabila Ismail Matta" expires="11/22" />
-                </Grid>
-          <Grid item xs={10} md={4} xl={2}>
-                  <DefaultInfoCard
-                    icon="account_balance"
-                    title="Total"
-                    description="Uang Khas"
-                    value="+$2000"
-                  />
-                </Grid>
-                <Grid item xs={10} md={4} xl={2}>
-                  <DefaultInfoCard
-                    icon="account_balance"
-                    title="Total"
-                    description="Total Uang Keluar"
-                    value="+$2000"
-                  />
-                </Grid>
-                <Grid item xs={10} md={4} xl={2}>
-                  <DefaultInfoCard
-                    icon="account_balance"
-                    title="Total"
-                    description="Total Uang Keluar"
-                    value="+$2000"
-                  />
-                </Grid>
-              
+            <Grid item xs={12} md={6} xl={5}>
+              <MasterCard number={4562112245947852} holder="Nabila Ismail Matta" expires="11/22" />
+            </Grid>
+            <Grid item xs={12} md={4} xl={2}>
+              <DefaultInfoCard
+                icon="account_balance"
+                title="Total"
+                description="Uang Khas"
+                value="+$2000"
+              />
+            </Grid>
+            <Grid item xs={12} md={4} xl={2}>
+              <DefaultInfoCard
+                icon="account_balance"
+                title="Total"
+                description="Total Uang Keluar"
+                value="+$2000"
+              />
+            </Grid>
+            <Grid item xs={12} md={4} xl={2}>
+              <DefaultInfoCard
+                icon="account_balance"
+                title="Total"
+                description="Total Uang Keluar"
+                value="+$2000"
+              />
+            </Grid>
           </Grid>
         </SoftBox>
         <SoftBox mb={3}>
