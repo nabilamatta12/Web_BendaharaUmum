@@ -8,7 +8,22 @@ import DashboardNavbar from 'examples/Navbars/DashboardNavbar';
 import Footer from 'examples/Footer';
 
 const PemasukanAlgoCafe = () => {
-  const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState([
+    { no: '1', nama: 'Nabila', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+    { no: '2', nama: 'Muliana', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+    { no: '3', nama: 'Misba', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+    { no: '4', nama: 'Arini', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+    { no: '5', nama: 'Diva', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+    { no: '6', nama: 'Uky', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+    { no: '7', nama: 'Ipul', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+    { no: '8', nama: 'Darius', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+    { no: '9', nama: 'Dzikri', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+    { no: '10', nama: 'Dayat', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+    { no: '11', nama: 'Farhan', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+    { no: '12', nama: 'Ajia', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+    { no: '13', nama: 'Maman', tahun: '2024', bulan: 'Januari', minggu: 'Rp.10.000' },
+  ]);
+
   const [showModal, setShowModal] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
   const [formData, setFormData] = useState({
@@ -16,7 +31,7 @@ const PemasukanAlgoCafe = () => {
     nama: '',
     tahun: '',
     bulan: '',
-    minggu: ''
+    minggu1: ''
   });
 
   const handleInputChange = (e) => {
@@ -36,7 +51,7 @@ const PemasukanAlgoCafe = () => {
       setRows([...rows, formData]);
     }
     // Clear form data and hide modal
-    setFormData({ no: '', nama: '', tahun: '', bulan: '', minggu: '' });
+    setFormData({ no: '', nama: '', tahun: '', bulan: '', minggu1: '' });
     setShowModal(false);
   };
 
@@ -63,7 +78,7 @@ const PemasukanAlgoCafe = () => {
               <th>Nama</th>
               <th>Tahun</th>
               <th>Bulan</th>
-              <th>Minggu</th>
+              <th>Minggu1</th>
               <th>Aksi</th>
             </tr>
           </thead>

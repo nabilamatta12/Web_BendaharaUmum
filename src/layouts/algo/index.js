@@ -8,13 +8,19 @@ import DashboardNavbar from 'examples/Navbars/DashboardNavbar';
 import Footer from 'examples/Footer';
 
 const PemasukanAlgoCafe = () => {
-  const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState([
+    { no: '1', tanggal: '2024-07-01', keterangan: 'Kopi Susu', harga: '12000', jumlah: '1' },
+    { no: '2', tanggal: '2024-07-02', keterangan: 'Es Milo', harga: '15000', jumlah: '3' },
+    { no: '3', tanggal: '2024-07-03', keterangan: 'Green Tea', harga: '15000', jumlah: '1' },
+    { no: '4', tanggal: '2024-07-03', keterangan: 'Thai Tea', harga: '15000', jumlah: '1' },
+    { no: '5', tanggal: '2024-07-03', keterangan: 'Es Batu', harga: '1000', jumlah: '1' }
+  ]);
   const [showModal, setShowModal] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
   const [formData, setFormData] = useState({
     no: '',
     tanggal: '',
-    nama: '',
+    keterangan: '',
     harga: '',
     jumlah: ''
   });
@@ -36,7 +42,7 @@ const PemasukanAlgoCafe = () => {
       setRows([...rows, formData]);
     }
     // Clear form data and hide modal
-    setFormData({ no: '', tanggal: '', nama: '', harga: '', jumlah: '' });
+    setFormData({ no: '', tanggal: '', keterangan: '', harga: '', jumlah: '' });
     setShowModal(false);
   };
 
@@ -61,9 +67,10 @@ const PemasukanAlgoCafe = () => {
             <tr>
               <th>No</th>
               <th>Tanggal</th>
-              <th>Nama</th>
+              <th>Keterangan</th>
               <th>Harga</th>
               <th>Jumlah</th>
+              <th>Total</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -72,9 +79,10 @@ const PemasukanAlgoCafe = () => {
               <tr key={index}>
                 <td>{row.no}</td>
                 <td>{row.tanggal}</td>
-                <td>{row.nama}</td>
+                <td>{row.keterangan}</td>
                 <td>{row.harga}</td>
                 <td>{row.jumlah}</td>
+                <td>{row.harga * row.jumlah}</td>
                 <td>
                   <Button variant="warning" size="sm" onClick={() => handleEditRow(index)}><FaEdit /></Button>{' '}
                   <Button variant="danger" size="sm" onClick={() => handleDeleteRow(index)}><FaTrash /></Button>
@@ -108,12 +116,12 @@ const PemasukanAlgoCafe = () => {
                   onChange={handleInputChange}
                 />
               </Form.Group>
-              <Form.Group controlId="formNama">
-                <Form.Label>Nama</Form.Label>
+              <Form.Group controlId="formKeterangan">
+                <Form.Label>Keterangan</Form.Label>
                 <Form.Control
                   type="text"
-                  name="nama"
-                  value={formData.nama}
+                  name="keterangan"
+                  value={formData.keterangan}
                   onChange={handleInputChange}
                 />
               </Form.Group>

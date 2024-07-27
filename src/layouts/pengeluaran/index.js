@@ -8,7 +8,13 @@ import DashboardNavbar from 'examples/Navbars/DashboardNavbar';
 import Footer from 'examples/Footer';
 
 const Pengeluaran = () => {
-  const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState([
+    { no: '1', tanggal: '2024-07-01', nama: 'Sumbangan Coc', notaImage: null, harga: 'Rp200.000', jumlah: 'Null' },
+    { no: '2', tanggal: '2024-07-02', nama: 'Tinta Snowman', notaImage: null, harga: 'Rp25.000', jumlah: '1pcs' },
+    { no: '3', tanggal: '2024-07-03', nama: 'Kertas HPS', notaImage: null, harga: 'Rp200.000', jumlah: '1rem' },
+    { no: '4', tanggal: '2024-07-03', nama: 'Spidoll', notaImage: null, harga: 'Rp20.000', jumlah: '1pcs' },
+    { no: '5', tanggal: '2024-07-03', nama: 'Lampu', notaImage: null, harga: 'Rp25.000', jumlah: '1pcs' }
+  ]);
   const [showModal, setShowModal] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
   const [formData, setFormData] = useState({
@@ -133,15 +139,6 @@ const Pengeluaran = () => {
                   onChange={handleInputChange}
                 />
               </Form.Group>
-              {/* <Form.Group controlId="formNota">
-                <Form.Label>Nota</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="nota"
-                  value={formData.nota}
-                  onChange={handleInputChange}
-                />
-              </Form.Group> */}
               <Form.Group controlId="formNotaImage">
                 <Form.Label>Nota Image</Form.Label>
                 <Form.Control
