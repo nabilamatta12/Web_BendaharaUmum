@@ -22,10 +22,7 @@ import { Card } from "@mui/material";
 import typography from "assets/theme/base/typography";
 
 // Dashboard layout components
-import BuildByDevelopers from "old/dashboard/components/BuildByDevelopers";
-import WorkWithTheRockets from "old/dashboard/components/WorkWithTheRockets";
-import Projects from "old/dashboard/components/Projects";
-import OrderOverview from "old/dashboard/components/OrderOverview";
+
 import authorsTableData from "./data/authorsTableData";
 
 // Data
@@ -44,7 +41,7 @@ function Dashboard() {
         <SoftBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} xl={5}>
-              <MasterCard number={4562112245947852} holder="Nabila Ismail Matta" expires="11/22" />
+              <MasterCard number={380801031645533} holder="Nabila Ismail Matta" expires="11/22" />
             </Grid>
             <Grid item xs={12} md={4} xl={2}>
               <DefaultInfoCard

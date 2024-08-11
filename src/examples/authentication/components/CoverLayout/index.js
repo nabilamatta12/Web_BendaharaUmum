@@ -1,3 +1,17 @@
+/**
+=========================================================
+* Soft UI Dashboard React - v4.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
+* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*/
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -14,24 +28,24 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import PageLayout from "examples/LayoutContainers/PageLayout";
 
 // Authentication layout components
-// import Footer from "layouts/authentication/components/Footer";
+import Footer from "layouts/authentication/components/Footer";
 
 function CoverLayout({ color, header, title, description, image, top, children }) {
   return (
     <PageLayout background="white">
       <DefaultNavbar
-        // action={{
-        //   type: "external",
-        //   route: "https://creative-tim.com/product/soft-ui-dashboard-react",
-        //   label: "free download",
-        //   color: "dark",
-        // }}
+        action={{
+          type: "external",
+          route: "https://creative-tim.com/product/soft-ui-dashboard-react",
+          label: "free download",
+          color: "dark",
+        }}
       />
       <Grid
         container
         justifyContent="center"
         sx={{
-          minHeight: "50vh",
+          minHeight: "75vh",
           margin: 0,
         }}
       >
@@ -66,24 +80,22 @@ function CoverLayout({ color, header, title, description, image, top, children }
             sx={{
               transform: "skewX(-10deg)",
               overflow: "hidden",
+              borderBottomLeftRadius: ({ borders: { borderRadius } }) => borderRadius.lg,
             }}
           >
             <SoftBox
-              ml={5}
-              mt={20}
+              ml={-8}
               height="100%"
               sx={{
                 backgroundImage: `url(${image})`,
-                backgroundSize: "40%",
-                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
                 transform: "skewX(10deg)",
-                
               }}
             />
           </SoftBox>
         </Grid>
       </Grid>
-      {/* <Footer /> */}
+      <Footer />
     </PageLayout>
   );
 }
@@ -94,7 +106,7 @@ CoverLayout.defaultProps = {
   title: "",
   description: "",
   color: "info",
-  top: 15,
+  top: 20,
 };
 
 // Typechecking props for the CoverLayout

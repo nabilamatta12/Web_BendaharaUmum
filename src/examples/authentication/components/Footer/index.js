@@ -1,4 +1,3 @@
-
 // @mui material components
 import Grid from "@mui/material/Grid";
 
@@ -18,7 +17,7 @@ function Footer() {
     <SoftBox component="footer" py={6}>
       <Grid container justifyContent="center">
         <Grid item xs={10} lg={8}>
-          {/* <SoftBox display="flex" justifyContent="center" flexWrap="wrap" mb={3}>
+          <SoftBox display="flex" justifyContent="center" flexWrap="wrap" mb={3}>
             <SoftBox mr={{ xs: 2, lg: 3, xl: 6 }}>
               <SoftTypography component="a" href="#" variant="body2" color="secondary">
                 Company
@@ -49,10 +48,10 @@ function Footer() {
                 Pricing
               </SoftTypography>
             </SoftBox>
-          </SoftBox> */}
+          </SoftBox>
         </Grid>
         <Grid item xs={12} lg={8}>
-          {/* <SoftBox display="flex" justifyContent="center" mt={1} mb={3}>
+          <SoftBox display="flex" justifyContent="center" mt={1} mb={3}>
             <SoftBox mr={3} color="secondary">
               <FacebookIcon fontSize="small" />
             </SoftBox>
@@ -68,11 +67,11 @@ function Footer() {
             <SoftBox color="secondary">
               <LinkedInIcon fontSize="small" />
             </SoftBox>
-          </SoftBox> */}
+          </SoftBox>
         </Grid>
         <Grid item xs={12} lg={8} sx={{ textAlign: "center" }}>
           <SoftTypography variant="body2" color="secondary">
-            Copyright &copy; 2024 Soft by Creative Tim COCONUT.
+            Copyright &copy; 2024 COCONUT COMPUTER CLUB BENDAHARA UMUM.
           </SoftTypography>
         </Grid>
       </Grid>
