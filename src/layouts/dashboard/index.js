@@ -1,6 +1,8 @@
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Icon from "@mui/material/Icon";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
@@ -18,6 +20,8 @@ import GradientLineChart from "examples/Charts/LineCharts/GradientLineChart";
 import Table from "examples/Tables/Table";
 import { Card } from "@mui/material";
 
+import TableSumbangan from "layouts/sumbangan/tableSumbangan/TableSumbangan";
+
 // Soft UI Dashboard React base styles
 import typography from "assets/theme/base/typography";
 
@@ -32,7 +36,77 @@ import gradientLineChartData from "old/dashboard/data/gradientLineChartData";
 function Dashboard() {
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
-  const { columns, rows } = authorsTableData;
+  // const { columns, rows } = authorsTableData;
+  const [rows, setRows] = useState([]);
+  const navigate = useNavigate();
+  const [inforows, setInfo] = useState({
+    sisa_uang:'',
+    total_pengeluaran:'',
+    total_sumbangan:'',
+  })
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('authToken'); // Ambil token dari localStorage
+        // if (!token) {
+        //   navigate('/authentication/sign-in');
+        //   return;
+        // }
+
+        const response = await fetch('https://e75b-140-213-1-165.ngrok-free.app/sumbangan/all', {
+          method: 'GET', // atau 'POST' tergantung kebutuhan
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Tambahkan header Authorization
+          },
+        })
+        const result = await response.json();
+
+        console.log("result sumbangan", result)
+
+        setRows(result);
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [navigate]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('authToken'); // Ambil token dari localStorage
+        // if (!token) {
+        //   navigate('/authentication/sign-in');
+        //   return;
+        // }
+
+        const response = await fetch('https://e75b-140-213-1-165.ngrok-free.app/info', {
+          method: 'GET', // atau 'POST' tergantung kebutuhan
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Tambahkan header Authorization
+          },
+        })
+        const result = await response.json();
+
+        console.log("result Inf", result)
+        setInfo(result);
+        console.log(inforows);
+
+        // setRows(result);
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [navigate]);
+
 
   return (
     <DashboardLayout>
@@ -48,23 +122,23 @@ function Dashboard() {
                 icon="account_balance"
                 title="Total"
                 description="Uang Khas"
-                value="+$2000"
+                value={"Rp "+inforows["sisa_uang"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
               />
             </Grid>
             <Grid item xs={12} md={4} xl={2}>
               <DefaultInfoCard
                 icon="account_balance"
                 title="Total"
-                description="Total Uang Keluar"
-                value="+$2000"
+                description="Uang Keluar"
+                value={"Rp "+inforows["total_pengeluaran"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
               />
             </Grid>
             <Grid item xs={12} md={4} xl={2}>
               <DefaultInfoCard
                 icon="account_balance"
                 title="Total"
-                description="Total Uang Keluar"
-                value="+$2000"
+                description="Uang Masuk"
+                value={"Rp "+inforows["total_sumbangan"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
               />
             </Grid>
           </Grid>
@@ -122,6 +196,15 @@ function Dashboard() {
               <Table columns={columns} rows={rows} />
             </SoftBox>
           </Card> */}
+          </SoftBox>
+      <SoftBox py={3}>
+        <SoftBox mb={3}>
+            <SoftBox mb={10}>
+
+          <h2>History Sumbangan</h2>
+          <TableSumbangan rows={rows} handleEditRow={null} />
+          </SoftBox>
+      </SoftBox>
       </SoftBox>
       <Footer />
     </DashboardLayout>

@@ -31,7 +31,7 @@ const SignIn = () => {
     };
 
     try {
-      const response = await fetch("https://595d-140-213-1-136.ngrok-free.app/login", {
+      const response = await fetch("https://e75b-140-213-1-165.ngrok-free.app/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,6 +40,7 @@ const SignIn = () => {
       });
       
       if (!response.ok) {
+        console.log(response);
         // Tampilkan pesan kesalahan kepada pengguna jika login gagal
         alert("Password atau username salah");
         return;

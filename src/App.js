@@ -9,7 +9,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Icon from "@mui/material/Icon";
 
 
-
 // Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
 
@@ -27,7 +26,8 @@ import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 
 // Soft UI Dashboard React routes
-import routes from "routes";
+// import routes from "routes";
+import RoutesConfig from "routes";
 
 // Soft UI Dashboard React contexts
 import { useSoftUIController, setMiniSidenav} from "context";
@@ -41,6 +41,7 @@ export default function App() {
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
+  const routes = RoutesConfig();
 
   // Cache for the rtl
   useMemo(() => {
@@ -85,7 +86,7 @@ export default function App() {
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
       if (route.collapse) {
-        return getRoutes(route.collapse);
+          return getRoutes(route.collapse);
       }
 
       if (route.route) {
