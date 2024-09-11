@@ -23,7 +23,7 @@ const Sumbangan = () => {
           return;
         }
 
-        const response = await fetch('https://e75b-140-213-1-165.ngrok-free.app/sumbangan/all', {
+        const response = await fetch('https://9e39-182-1-212-104.ngrok-free.app/sumbangan/all', {
           method: 'GET', // atau 'POST' tergantung kebutuhan
           headers: {
             'Content-Type': 'application/json',
@@ -78,13 +78,13 @@ const Sumbangan = () => {
     const newFormData = new FormData();
     if (formData.No != undefined){
       newFormData.append('no', formData.No);
-      url = "https://e75b-140-213-1-165.ngrok-free.app/sumbangan/update";
+      url = "https://9e39-182-1-212-104.ngrok-free.app/sumbangan/update";
     } else {
       if (!formData.notaImage){
         alert("Harap mengisi image");
         return
       }
-      url = "https://e75b-140-213-1-165.ngrok-free.app/sumbangan/add";
+      url = "https://9e39-182-1-212-104.ngrok-free.app/sumbangan/add";
     }
 
     console.log("url", url)
@@ -203,7 +203,7 @@ const Sumbangan = () => {
                 <td>{row.angkatan}</td>
                 <td>
                   {row.nota ? (
-                    <img src={"https://e75b-140-213-1-165.ngrok-free.app/image/sumbangan/"+row.nota} alt="Nota" style={{ width: '50px', height: '50px' }} />
+                    <img src={"https://9e39-182-1-212-104.ngrok-free.app/image/sumbangan/"+row.nota} alt="Nota" style={{ width: '50px', height: '50px' }} />
                   ) : 'No Image'}
                 </td>
                 <td>Rp {row.nilai}</td>

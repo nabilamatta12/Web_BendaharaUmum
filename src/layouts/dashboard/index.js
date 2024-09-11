@@ -54,7 +54,7 @@ function Dashboard() {
         //   return;
         // }
 
-        const response = await fetch('https://e75b-140-213-1-165.ngrok-free.app/sumbangan/all', {
+        const response = await fetch('https://9e39-182-1-212-104.ngrok-free.app/sumbangan/all', {
           method: 'GET', // atau 'POST' tergantung kebutuhan
           headers: {
             'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ function Dashboard() {
         //   return;
         // }
 
-        const response = await fetch('https://e75b-140-213-1-165.ngrok-free.app/info', {
+        const response = await fetch('https://9e39-182-1-212-104.ngrok-free.app/info', {
           method: 'GET', // atau 'POST' tergantung kebutuhan
           headers: {
             'Content-Type': 'application/json',

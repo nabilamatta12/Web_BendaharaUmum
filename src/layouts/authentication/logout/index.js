@@ -16,7 +16,7 @@ const Logout = () => {
       }
 
       try {
-        await fetch('https://e75b-140-213-1-165.ngrok-free.app/api/logout', {
+        await fetch('https://9e39-182-1-212-104.ngrok-free.app/api/logout', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,

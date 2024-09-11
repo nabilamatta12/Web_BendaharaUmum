@@ -21,14 +21,14 @@ const PemasukanAlgoCafe = () => {
   })
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData2 = async () => {
       try {
         const token = localStorage.getItem('authToken'); // Ambil token dari localStorage
         if (!token) {
           navigate('/authentication/sign-in');
           return;
         }
-        const response = await fetch('https://e75b-140-213-1-165.ngrok-free.app/algo/all', {
+        const response = await fetch('https://9e39-182-1-212-104.ngrok-free.app/algo/all', {
           method: 'GET', // atau 'POST' tergantung kebutuhan
           headers: {
             'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const PemasukanAlgoCafe = () => {
         console.error('Error fetching data:', error);
       }
     };
-    fetchData();
+    fetchData2();
   }, [navigate]);
 
 
@@ -58,7 +58,7 @@ const PemasukanAlgoCafe = () => {
         //   return;
         // }
 
-        const response = await fetch('https://e75b-140-213-1-165.ngrok-free.app/info-algo', {
+        const response = await fetch('https://9e39-182-1-212-104.ngrok-free.app/info-algo', {
           method: 'GET', // atau 'POST' tergantung kebutuhan
           headers: {
             'Content-Type': 'application/json',
@@ -88,6 +88,7 @@ const PemasukanAlgoCafe = () => {
     keterangan: '',
     harga: '',
     jumlah: '',
+    status: '',
   });
   const [notaImage, setNotaImage] = useState(null);
 
@@ -111,11 +112,11 @@ const PemasukanAlgoCafe = () => {
     let url = "";
     const newFormData = new FormData();
     if (formData.id != undefined){
-      url = "https://e75b-140-213-1-165.ngrok-free.app/algo/add";
+      url = "https://9e39-182-1-212-104.ngrok-free.app/algo/add";
     } else {
       newFormData.append('id', formData.id);
       console.log("Id", formData.id)
-      url = "https://e75b-140-213-1-165.ngrok-free.app/algo/update";
+      url = "https://9e39-182-1-212-104.ngrok-free.app/algo/update";
     }
     
     console.log("url", url)
@@ -137,6 +138,7 @@ const PemasukanAlgoCafe = () => {
     newFormData.append('keterangan', formData.keterangan);
     newFormData.append('harga', formData.harga);
     newFormData.append('jumlah', formData.jumlah);
+    newFormData.append('status', formData.status);
     console.log("NewFormData: ", newFormData);
     // console.log(rows[formData.No-1].nota)
 
@@ -182,7 +184,9 @@ const PemasukanAlgoCafe = () => {
       date: '',
       notaImage: null,
       nilai: '',
-      keterangan: '',})
+      keterangan: '',
+      status: '',
+    })
     setShowModal(false)
   }
 
@@ -206,7 +210,6 @@ const PemasukanAlgoCafe = () => {
           title="Total Pengeluaran"
           description="Belong Interactive"
           value={"Rp "+(infoAlgo.total_keluar).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
-
         />
         </Grid>
         <Grid item xs={12} md={4} xl={4}>
@@ -303,6 +306,15 @@ const PemasukanAlgoCafe = () => {
                   type="text"
                   name="jumlah"
                   value={formData.jumlah}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formStatus">
+                <Form.Label>Status</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="status"
+                  value={formData.status}
                   onChange={handleInputChange}
                 />
               </Form.Group>
