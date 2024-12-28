@@ -28,7 +28,7 @@ const PemasukanAlgoCafe = () => {
           navigate('/authentication/sign-in');
           return;
         }
-        const response = await fetch('https://9e39-182-1-212-104.ngrok-free.app/algo/all', {
+        const response = await fetch(`${localStorage.getItem('api-endpoint')}/algo/all`, {
           method: 'GET', // atau 'POST' tergantung kebutuhan
           headers: {
             'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const PemasukanAlgoCafe = () => {
         //   return;
         // }
 
-        const response = await fetch('https://9e39-182-1-212-104.ngrok-free.app/info-algo', {
+        const response = await fetch(`${localStorage.getItem('api-endpoint')}/info-algo`, {
           method: 'GET', // atau 'POST' tergantung kebutuhan
           headers: {
             'Content-Type': 'application/json',
@@ -112,11 +112,11 @@ const PemasukanAlgoCafe = () => {
     let url = "";
     const newFormData = new FormData();
     if (formData.id != undefined){
-      url = "https://9e39-182-1-212-104.ngrok-free.app/algo/add";
+      url = `${localStorage.getItem('authToken')}/algo/add`;
     } else {
       newFormData.append('id', formData.id);
       console.log("Id", formData.id)
-      url = "https://9e39-182-1-212-104.ngrok-free.app/algo/update";
+      url = `${localStorage.getItem('authToken')}/algo/update`;
     }
     
     console.log("url", url)

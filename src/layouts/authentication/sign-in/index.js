@@ -9,7 +9,8 @@ import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftInput from "components/SoftInput";
 import SoftButton from "components/SoftButton";
-
+import Grid from "@mui/material/Grid";
+import {Button} from "react-bootstrap";
 // Authentication layout components
 import CoverLayout from "layouts/authentication/components/CoverLayout";
 
@@ -17,6 +18,7 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 import curved9 from "assets/images/Asset4@3x.png";
 
 const SignIn = () => {
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
@@ -31,7 +33,7 @@ const SignIn = () => {
     };
 
     try {
-      const response = await fetch("https://9e39-182-1-212-104.ngrok-free.app/login", {
+      const response = await fetch(`${localStorage.getItem('api-endpoint')}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,6 +66,12 @@ const SignIn = () => {
     }
   };
 
+  const handleApi = () => {
+    const defaultEndpoint = localStorage.getItem("api-endpoint")
+    let endpointapi = prompt(`endpoint: ${defaultEndpoint}`,defaultEndpoint)
+    localStorage.setItem("api-endpoint", endpointapi);
+  }
+
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
   return (
@@ -72,6 +80,11 @@ const SignIn = () => {
       description="Enter your email and password to sign in"
       image={curved9}
     >
+                <Grid item xs={3} md={2} xl={12}>
+            {/* <SoftBox mb={3}> */}
+              <Button variant="primary" onClick={() => handleApi()}>Set Api Url</Button>
+            {/* </SoftBox> */}
+          </Grid>
       <SoftBox component="form" role="form" onSubmit={handleLogin}>
         <SoftBox mb={2}>
           <SoftBox mb={1} ml={0.5}>

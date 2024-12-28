@@ -13,17 +13,18 @@ import Footer from 'examples/Footer';
 const Sumbangan = () => {
   const [rows, setRows] = useState([]);
   const navigate = useNavigate();
+  const token = localStorage.getItem('authToken'); // Ambil token dari localStorage
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = localStorage.getItem('authToken'); // Ambil token dari localStorage
         if (!token) {
           navigate('/authentication/sign-in');
           return;
         }
 
-        const response = await fetch('https://9e39-182-1-212-104.ngrok-free.app/sumbangan/all', {
+        const response = await fetch(`${localStorage.getItem('api-endpoint')}/sumbangan/all`, {
           method: 'GET', // atau 'POST' tergantung kebutuhan
           headers: {
             'Content-Type': 'application/json',
@@ -32,7 +33,7 @@ const Sumbangan = () => {
         })
         const result = await response.json();
 
-        console.log("result sumbangan", result)
+        console.log("result sumbangan", response.ok)
 
         setRows(result);
 
@@ -76,15 +77,17 @@ const Sumbangan = () => {
     let currentNota = "";
     let url = "";
     const newFormData = new FormData();
+    console.log(formData.No != undefined)
+    console.log(formData.no)
     if (formData.No != undefined){
       newFormData.append('no', formData.No);
-      url = "https://9e39-182-1-212-104.ngrok-free.app/sumbangan/update";
+      url = `${localStorage.getItem('authToken')}/api/sumbangan/update`;
     } else {
       if (!formData.notaImage){
         alert("Harap mengisi image");
         return
       }
-      url = "https://9e39-182-1-212-104.ngrok-free.app/sumbangan/add";
+      url = `${localStorage.getItem('authToken')}/api/sumbangan/add`;
     }
 
     console.log("url", url)
@@ -131,20 +134,25 @@ const Sumbangan = () => {
     try {
       const response = await fetch(url, {
         method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`, // Tambahkan header Authorization
+        },
         body: newFormData,
       });
   
-      if (!response.ok) {
-        throw new Error('Failed to send data');
-      }
+
   
       const result = await response.json();
       console.log('Data sent successfully:', result);
+      if (!response.ok) {
+        alert(result.error)
+        navigate('/authentication/logout');
+      }
       setShowModal(false); // Tutup modal setelah berhasil
       
       // Tambahkan logika untuk memperbarui data di UI jika diperlukan
     } catch (error) {
-      console.error('Error sending data:', error);
+      console.error('Error sending data sumbangan:', error);
       return 
     }
     resetModal();
@@ -203,7 +211,7 @@ const Sumbangan = () => {
                 <td>{row.angkatan}</td>
                 <td>
                   {row.nota ? (
-                    <img src={"https://9e39-182-1-212-104.ngrok-free.app/image/sumbangan/"+row.nota} alt="Nota" style={{ width: '50px', height: '50px' }} />
+                    <img src={"https://70db-114-10-134-209.ngrok-free.app/image/sumbangan/"+row.nota} alt="Nota" style={{ width: '50px', height: '50px' }} />
                   ) : 'No Image'}
                 </td>
                 <td>Rp {row.nilai}</td>

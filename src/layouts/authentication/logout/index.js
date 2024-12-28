@@ -16,7 +16,7 @@ const Logout = () => {
       }
 
       try {
-        await fetch('https://9e39-182-1-212-104.ngrok-free.app/api/logout', {
+        await fetch(`${localStorage.getItem('api-endpoint')}/api/logout`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -24,10 +24,7 @@ const Logout = () => {
           },
         });
 
-        // Hapus token dari localStorage
         localStorage.removeItem('authToken');
-
-        // Arahkan pengguna ke halaman login
         navigate('/authentication/sign-in');
       } catch (error) {
         console.error('Error during logout:', error);

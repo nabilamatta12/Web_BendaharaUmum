@@ -27,7 +27,7 @@ const PemasukanAlgoCafe = () => {
         navigate('/authentication/sign-in');
         return;
       }
-      const response = await fetch('https://9e39-182-1-212-104.ngrok-free.app/api/iuran/addtable',{
+      const response = await fetch(`${localStorage.getItem('api-endpoint')}/api/iuran/addtable`,{
 
         method: 'POST',
         headers: {
@@ -63,7 +63,7 @@ const PemasukanAlgoCafe = () => {
 
         const [response1, response2] = await Promise.all([
           
-        fetch('https://9e39-182-1-212-104.ngrok-free.app/api/iuran/all', {
+        fetch(`${localStorage.getItem('api-endpoint')}/api/iuran/all`, {
           method: 'GET', // atau 'POST' tergantung kebutuhan
           headers: headers,
           // headers: {
@@ -71,18 +71,22 @@ const PemasukanAlgoCafe = () => {
           //   'Authorization': `Bearer ${token}`, // Tambahkan header Authorization
           // },
         }),
-        fetch('https://9e39-182-1-212-104.ngrok-free.app/api/iuran/bph', {
+        fetch(`${localStorage.getItem('api-endpoint')}/api/iuran/bph`, {
           method: 'GET',
           headers: headers,
         })
         ])
 
-        if (!response1.ok || !response2.ok) {
-          throw new Error('Failed to fetch data');
-        }
+
         // const response = await fetch('https://1887-114-10-134-219.ngrok-free.app/iuran/all'); // Ganti dengan URL API Anda
         const result = await response1.json();
         const result2 = await response2.json();
+
+        if (!response1.ok || !response2.ok) {
+          alert(result.error)
+            navigate('/authentication/logout');
+            return;
+        }
 
         const formattedData = {};
         console.log("result", result)
@@ -188,7 +192,7 @@ console.log(token); // Ini akan menampilkan nilai token yang disimpan
         return;
       }
 
-      const response = await fetch(`https://9e39-182-1-212-104.ngrok-free.app/api/iuran/update`, {
+      const response = await fetch(`${localStorage.getItem('api-endpoint')}/api/iuran/update`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

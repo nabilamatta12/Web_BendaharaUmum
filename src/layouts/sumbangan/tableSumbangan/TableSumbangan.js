@@ -29,7 +29,7 @@ const TableSumbangan = ({ rows, handleEditRow }) => {
             <td>{row.angkatan}</td>
             <td>
               {row.nota ? (
-                <img src={"https://9e39-182-1-212-104.ngrok-free.app/image/sumbangan/" + row.nota} alt="Nota" style={{ width: '50px', height: '50px' }} />
+                <img src={`${localStorage.getItem('authToken')}/image/sumbangan/` + row.nota} alt="Nota" style={{ width: '50px', height: '50px' }} />
               ) : 'No Image'}
             </td>
             <td>Rp {row.nilai.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</td>

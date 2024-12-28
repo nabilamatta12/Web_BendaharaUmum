@@ -21,7 +21,7 @@ const Pengeluaran = () => {
           return;
         }
 
-        const response = await fetch('https://9e39-182-1-212-104.ngrok-free.app/pengeluaran/all', {
+        const response = await fetch(`${localStorage.getItem('api-endpoint')}/pengeluaran/all`, {
           method: 'GET', // atau 'POST' tergantung kebutuhan
           headers: {
             'Content-Type': 'application/json',
@@ -74,13 +74,13 @@ const Pengeluaran = () => {
     const newFormData = new FormData();
     if (formData.No != undefined){
       newFormData.append('no', formData.No);
-      url = "https://9e39-182-1-212-104.ngrok-free.app/pengeluaran/update";
+      url = `${localStorage.getItem('authToken')}/pengeluaran/update`;
     } else {
       if (!formData.notaImage){
         alert("Harap mengisi image");
         return
       }
-      url = "https://9e39-182-1-212-104.ngrok-free.app/pengeluaran/add";
+      url = `${localStorage.getItem('authToken')}/pengeluaran/add`;
     }
 
     console.log("url", url)
@@ -180,7 +180,7 @@ const Pengeluaran = () => {
                 <td>{row.date}</td>
                 <td>
                   {row.nota ? (
-                    <img src={"https://9e39-182-1-212-104.ngrok-free.app/image/pengeluaran/"+row.nota} alt="Nota" style={{ width: '50px', height: '50px' }} />
+                    <img src={`${localStorage.getItem('authToken')}/image/pengeluaran/`+row.nota} alt="Nota" style={{ width: '50px', height: '50px' }} />
                   ) : 'No Image'}
                 </td>
                 <td>Rp {row.nilai.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</td>

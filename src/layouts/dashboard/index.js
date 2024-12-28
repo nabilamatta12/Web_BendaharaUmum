@@ -54,7 +54,7 @@ function Dashboard() {
         //   return;
         // }
 
-        const response = await fetch('https://9e39-182-1-212-104.ngrok-free.app/sumbangan/all', {
+        const response = await fetch(`${localStorage.getItem('api-endpoint')}/sumbangan/all`, {
           method: 'GET', // atau 'POST' tergantung kebutuhan
           headers: {
             'Content-Type': 'application/json',
@@ -76,6 +76,7 @@ function Dashboard() {
   }, [navigate]);
 
   useEffect(() => {
+
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('authToken'); // Ambil token dari localStorage
@@ -84,7 +85,7 @@ function Dashboard() {
         //   return;
         // }
 
-        const response = await fetch('https://9e39-182-1-212-104.ngrok-free.app/info', {
+        const response = await fetch(`${localStorage.getItem('api-endpoint')}/info`, {
           method: 'GET', // atau 'POST' tergantung kebutuhan
           headers: {
             'Content-Type': 'application/json',
@@ -93,14 +94,16 @@ function Dashboard() {
         })
         const result = await response.json();
 
-        console.log("result Inf", result)
+        console.log("result Info:", result)
+        console.log("Local Storage",localStorage.getItem("api-endpoint"))
         setInfo(result);
         console.log(inforows);
 
         // setRows(result);
 
       } catch (error) {
-        console.error('Error fetching data:', error);
+        setInfo({"sisa_uang":0,"total_pengeluaran":0,"total_sumbangan":0})
+        console.error('Error fetching data info:', error);
       }
     };
 
@@ -114,10 +117,10 @@ function Dashboard() {
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6} xl={5}>
+            <Grid item xs={12} md={6} xl={5.2}>
               <MasterCard number={380801031645533} holder="Nabila Ismail Matta" expires="11/22" />
             </Grid>
-            <Grid item xs={12} md={4} xl={2}>
+            <Grid item xs={12} md={4} xl={2.2}>
               <DefaultInfoCard
                 icon="account_balance"
                 title="Total"
@@ -125,7 +128,7 @@ function Dashboard() {
                 value={"Rp "+inforows["sisa_uang"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
               />
             </Grid>
-            <Grid item xs={12} md={4} xl={2}>
+            <Grid item xs={12} md={4} xl={2.2}>
               <DefaultInfoCard
                 icon="account_balance"
                 title="Total"
@@ -133,7 +136,7 @@ function Dashboard() {
                 value={"Rp "+inforows["total_pengeluaran"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
               />
             </Grid>
-            <Grid item xs={12} md={4} xl={2}>
+            <Grid item xs={12} md={4} xl={2.2}>
               <DefaultInfoCard
                 icon="account_balance"
                 title="Total"
